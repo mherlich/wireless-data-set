@@ -1,0 +1,144 @@
+optimal:
+  description: All inputs for highest accuracy 
+  main: simple
+  flags-import: all
+  flags:
+    random_seed: uniform[1:999999]
+
+    epochs: 10
+    normalize_input: True
+    hidden_layers: [1, 2, 3, 4]
+    neurons_per_layer: [16, 64, 512, 2048]
+    dropout_rate: 0
+    activations: "relu"
+    scale_output: 1000000
+    batch_size: [8, 32, 128, 512]
+
+    inputs: 'lat, long, ele, rsrq, rsrp, rssi, sinr, signal, pci, dlong, dlat'
+    input_time_of_day: True
+    input_days_since_start: True
+    input_prevDR: 3
+    input_succDR: 3
+    input_cell_id_categories: 100
+    fill_na: ["median", "mean"]
+    mark_na: True
+
+    loss_function: 'mean_absolute_error'
+    optimizer: 'adam'
+    learning_rate: [1e-4, 1e-3, 1e-2, 1e-1]
+
+next:
+  description: Predict data rate for next second 
+  main: simple
+  flags-import: all
+  flags:
+    random_seed: uniform[1:999999]
+
+    epochs: 10
+    normalize_input: True
+    hidden_layers: [1, 2, 3, 4]
+    neurons_per_layer: [16, 64, 512, 2048]
+    dropout_rate: 0
+    activations: "relu"
+    scale_output: 1000000
+    batch_size: [8, 32, 128, 512]
+
+    inputs: 'lat, long, ele, rsrq, rsrp, rssi, sinr, signal, pci, dlong, dlat'
+    input_time_of_day: True
+    input_days_since_start: True
+    input_prevDR: 3
+    input_succDR: 0
+    input_cell_id_categories: 100
+    fill_na: ["median", "mean"]
+    mark_na: True
+
+    loss_function: 'mean_absolute_error'
+    optimizer: 'adam'
+    learning_rate: [1e-4, 1e-3, 1e-2, 1e-1]
+    
+nodata:
+  description: Predict data rate for next second without data rates
+  main: simple
+  flags-import: all
+  flags:
+    random_seed: uniform[1:999999]
+
+    epochs: 10
+    normalize_input: True
+    hidden_layers: [1, 2, 3, 4]
+    neurons_per_layer: [16, 64, 512, 2048]
+    dropout_rate: 0
+    activations: "relu"
+    scale_output: 1000000
+    batch_size: [8, 32, 128, 512]
+
+    inputs: 'lat, long, ele, rsrq, rsrp, rssi, sinr, signal, pci, dlong, dlat'
+    input_time_of_day: True
+    input_days_since_start: True
+    input_prevDR: 0
+    input_succDR: 0
+    input_cell_id_categories: 100
+    fill_na: ["median", "mean"]
+    mark_na: True
+
+    loss_function: 'mean_absolute_error'
+    optimizer: 'adam'
+    learning_rate: [1e-4, 1e-3, 1e-2, 1e-1]
+
+local:
+  description: Predict data rate using signal und time parameters
+  main: simple
+  flags-import: all
+  flags:
+    random_seed: uniform[1:999999]
+
+    epochs: 10
+    normalize_input: True
+    hidden_layers: [1, 2, 3, 4]
+    neurons_per_layer: [16, 64, 512, 2048]
+    dropout_rate: 0
+    activations: "relu"
+    scale_output: 1000000
+    batch_size: [8, 32, 128, 512]
+
+    inputs: 'rsrq, rsrp, rssi, sinr, signal, pci'
+    input_time_of_day: True
+    input_days_since_start: True
+    input_prevDR: 0
+    input_succDR: 0
+    input_cell_id_categories: 0
+    fill_na: ["median", "mean"]
+    mark_na: True
+
+    loss_function: 'mean_absolute_error'
+    optimizer: 'adam'
+    learning_rate: [1e-4, 1e-3, 1e-2, 1e-1]
+
+map:
+  description: Predict data rate for coverage map
+  main: simple
+  flags-import: all
+  flags:
+    random_seed: uniform[1:999999]
+
+    epochs: 10
+    normalize_input: True
+    hidden_layers: [1, 2, 3, 4]
+    neurons_per_layer: [16, 64, 512, 2048]
+    dropout_rate: 0
+    activations: "relu"
+    scale_output: 1000000
+    batch_size: [8, 32, 128, 512]
+
+    inputs: 'lat, long, ele'
+    input_time_of_day: True
+    input_days_since_start: True
+    input_prevDR: 0
+    input_succDR: 0
+    input_cell_id_categories: 0
+    fill_na: ["median", "mean"]
+    mark_na: True
+
+    loss_function: 'mean_absolute_error'
+    optimizer: 'adam'
+    learning_rate: [1e-4, 1e-3, 1e-2, 1e-1]
