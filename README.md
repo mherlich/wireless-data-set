@@ -1,9 +1,9 @@
 # An Open Mobile Communications Drive Test Data Set and its Use for Machine Learning #
 
-This repository contains the code used in our paper
-* TODO: Add citation to our paper when available
+This repository contains the code and data set used in the corresponding open access paper:
+* <https://www.doi.org/10.1109/OJCOMS.2022.3210289>
 
-It contains the code that 
+Here is code that
 * Provides an introduction to the data set (intro.ipynb run in an environment with req-geo.txt)
 * Analyses the autocorrelation in time and space (spacetime.ipynb)
 * Trains a neural network to predict the data rate (simply.py in an environment with req-ml.txt)
